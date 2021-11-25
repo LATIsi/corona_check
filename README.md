@@ -1,70 +1,54 @@
-# Getting Started with Create React App
+# 코로나 19 집계 사이트
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+참고한 관련 사이트   
+https://www.youtube.com/watch?v=DtLhiMxgsm0
 
-## Available Scripts
+이 동영상으로 클론코딩을 하며 api관련 react 공부를 하고, 추가적으로 기능을 몇개 추가할 예정.  
+react-chartjs-2로 차트 라이브러리를 받아왔습니다.
 
-In the project directory, you can run:
+axiox get방식으로 가져오므로 포스트맨으로 api안의 요소를 확인하여 필요한것들을 가져오는 방식으로 하였습니다.
+Module not found: Can't resolve 'chart.js' 오류가 떠   
+npm install --save chart.js 으로 라이브러리를 추가했습니다.  
 
-### `npm start`
+그러나 map 관련 오류가 떠 찾아보니  
+react-chartjs-2, chart.js의 버전들이 안맞아 메뉴얼을 찾아서
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+**npm install --save chart.js@^2.9.4 react-chartjs-2@^2.11.2**  
+로 서로가 호환되는 버전을 설치해주었습니다.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
+----
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+https://www.chartjs.org/docs/latest/  
+chartjs
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+https://react-chartjs-2.netlify.app/docs/chartjs-v2/  
+react-chartjs-2의
+## Using with Chart.js v2
+참고,
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+  저는 Chart.js v2이니   
+**npm install --save chart.js@^2.9.4 react-chartjs-2@^2.11.2**  
+으로 하였으며, 만약 Chart.js v3으로 변환시  
+**npm install --save chart.js@^3.6.0 react-chartjs-2@latest**  
+를 해주어야합니다.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+chart의 도넛형, 라인형, 바형을 가져와 활용합니다.
 
-### `npm run eject`
+-----
+ 
+## API 관련
+ useEffect로 상태를 변화시켜줍니다.  
+ axios.get(api 주소)
+로 axios로 api 받아오는데  
+async와 await 를 넣어주어, axios를 다 받아온뒤에 다음을 실행합니다  
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+-----
+## 추가할점 
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- 해외(일본, 중국, 미국)의 코로나 집계수의 기능도 추가할 예정입니다
+- 디자인 관련해서 수정을 할 예정입니다.
