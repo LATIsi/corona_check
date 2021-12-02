@@ -5,6 +5,7 @@ import '../App.css';
 
 
 const Contents = () => {
+    let now = new Date();
 
     const [confirmedData, setConfirmed] = useState({   });
     const [quarantineData, setQuarantine] = useState({   });
@@ -68,21 +69,22 @@ const Contents = () => {
                     return acc;
                 },[])
 
-                const labels= arr.map(a=> `${a.month+1}월`);
+            const labels= arr.map(a=> `${a.year}/${a.month+1}월`);
             setConfirmed({
                 labels,
                 datasets : [{
-                    label:"국내 누적 확진자",
+                    label:"2020, 2021 국내 누적 확진자",
                     backgroundColor: "salmon",
                     fill:true,
-                    data:arr.map(a=>a.confirmed)
+                    data:arr.map(a=>{
+                        return a.confirmed})
                 },]
             });
 
             setQuarantine({
                 labels,
                 datasets : [{
-                    label:"월별 격리자 현황",
+                    label:"2021 월별 격리자 현황",
                     borderColor: "salmon",
                     fill:false,
                     data:arr.map(a=>a.active)
@@ -103,7 +105,12 @@ const Contents = () => {
             }
 
         fetchEvents()
+        
     })
+
+    const toYear = now.getFullYear();
+    const toMonth = now.getMonth()+1;
+    const toDay = now.getDate();
 
     return (
         <selection>
@@ -115,6 +122,7 @@ const Contents = () => {
               <div>
                   <Line data={quarantineData} options={options2}/>
               </div>
+              <h2> 오늘 {toYear}년 {toMonth}월 {toDay}일의 코로나 현황</h2>
               <div>
                   <Doughnut data={conmparedData} options={options3}/>
               </div>
